@@ -88,8 +88,13 @@
       aCFI: ${d.aCFI_Percentile}<br>
       Survivability: ${d.Survivability}
     `;
-    const marker = L.marker([+d.Latitude, +d.Longitude], {
-      icon: L.divIcon({ className: 'emoji-icon', html: `<div style="color:${getColor(+d.Survivability, breaks)};">⛪</div>` })
+    const marker = L.circleMarker([+d.Latitude, +d.Longitude], {
+      radius: 7,
+      fillColor: getColor(+d.Survivability, breaks),
+      color: "#333",
+      weight: 1,
+      opacity: 1,
+      fillOpacity: 0.9
     }).bindPopup(popup);
     marker.religion = d.Religion;
     marker.addTo(map);
