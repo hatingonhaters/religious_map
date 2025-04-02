@@ -74,12 +74,11 @@
   const denominationSet = new Set();
   const survivability = data
   .map(d => parseFloat(d.Survivability))
-  .filter(val => !isNaN(val))
-  .sort((a, b) => b - a);
-  const breaks = [];
-  for (let i = 0; i <= 8; i++) {
-    breaks.push(survivability[Math.floor(i * survivability.length / 8)]);
-  }
+  .filter(val => !isNaN(val));
+  const min = Math.min(...survivability);
+  const max = Math.max(...survivability);
+  const step = (max - min) / 8;
+  const breaks = Array.from({ length: 9 }, (_, i) => min + i * step).reverse();
 
   data.forEach(d => {
     denominationSet.add(d.Religion);
