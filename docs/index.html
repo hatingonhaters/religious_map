@@ -72,7 +72,7 @@
 
   const pins = [];
   const denominationSet = new Set();
-  const survivability = data.map(d => +d.Survivability).sort((a, b) => a - b);
+  const survivability = data.map(d => +d.Survivability).sort((a, b) => b - a);
   const breaks = [];
   for (let i = 0; i <= 8; i++) {
     breaks.push(survivability[Math.floor(i * survivability.length / 8)]);
